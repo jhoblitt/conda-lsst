@@ -13,8 +13,8 @@ build:
   string: "0"
 
 source:
-  git_tag: *package_version
-  git_url: https://github.com/mjuric/legacy_configs
+  git_tag: master
+  git_url: https://github.com/jhoblitt/legacy_configs.git
 
 requirements:
   build:
