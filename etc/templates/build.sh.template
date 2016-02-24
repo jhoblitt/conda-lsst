@@ -84,7 +84,9 @@ export
 # ./_build.sh <verb>
 echo '#!/bin/bash' > _build.sh
 export >> _build.sh
+echo "PREFIX='$PREFIX'" >> _build.sh
 echo "PRODUCT='$PRODUCT'" >> _build.sh
+echo "VERSION='$EUPS_VERSION'" >> _build.sh
 echo 'eupspkg PREFIX="$PREFIX" PRODUCT="$PRODUCT" VERSION="$EUPS_VERSION" FLAVOR=generic $@' >> _build.sh
 chmod +x _build.sh
 
