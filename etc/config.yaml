@@ -148,6 +148,8 @@ dependencies:
       - recipe/eups >=2.0.2
       - "gcc ==4.8.5                   # [not osx]"
       - "patchelf ==0.8                # [not osx]"
+  ndarray:
+    build: [ cmake ]
 
 #
 # Pin a specific version of a package. This will be applied to all
