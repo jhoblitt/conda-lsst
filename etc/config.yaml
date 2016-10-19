@@ -37,7 +37,7 @@ patch_dir: etc/patches
 #
 internal_products:
   python:
-  swig:
+  #swig:
   flask:
   twisted:
   numpy:
@@ -160,9 +160,9 @@ pin_versions:
   python:
     build: "2.7.*"
     run:   "2.7.*"
-  swig:
-    build: "==3.0.10"
-    run:   "==3.0.10"
+  #swig:
+  #  build: "==3.0.10"
+  #  run:   "==3.0.10"
   scipy:
     build: "0.16.*"
     run:   ">=0.16"
