@@ -1,7 +1,11 @@
-FROM    centos:centos5
+FROM	continuumio/conda_builder_linux:5.11-5.2-1-0
+USER	root
 
 # Following instructions on:
 # https://www.digitalocean.com/community/tutorials/docker-explained-using-dockerfiles-to-automate-building-of-images
+
+# epel5 provides git
+RUN	rpm -ivh http://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm
 
 # Get toolchain prerequisites
 RUN	yum install -y \
@@ -15,8 +19,7 @@ RUN	yum install -y \
 RUN	yum install -y rsync
 
 # Install joe for mjuric
-RUN	rpm -ivh http://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm && \
-	yum install -y joe
+RUN yum install -y joe
 
 # Create user corresponding to our local user
 ARG	GROUP_ID
@@ -26,7 +29,8 @@ ARG	USER_NAME
 ARG	HOME
 
 RUN	groupadd -g $GROUP_ID $GROUP_NAME
-RUN	useradd -d $HOME -g $GROUP_NAME -u $USER_ID $USER_NAME
+# add user to wheel group to enable sudo
+RUN	useradd -d $HOME -g $GROUP_NAME -G wheel -u $USER_ID $USER_NAME
 
 ENV	PATH=$HOME/conda-lsst/miniconda/bin:$PATH
 
