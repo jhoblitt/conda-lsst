@@ -28,9 +28,9 @@ ARG	USER_ID
 ARG	USER_NAME
 ARG	HOME
 
-RUN	groupadd -g $GROUP_ID $GROUP_NAME
+RUN	groupadd -o -g $GROUP_ID $GROUP_NAME
 # add user to wheel group to enable sudo
-RUN	useradd -d $HOME -g $GROUP_NAME -G wheel -u $USER_ID $USER_NAME
+RUN	useradd -o -d $HOME -g $GROUP_NAME -G wheel -u $USER_ID $USER_NAME
 
 ENV	PATH=$HOME/conda-lsst/miniconda/bin:$PATH
 
