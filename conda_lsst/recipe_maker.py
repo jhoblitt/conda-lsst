@@ -230,11 +230,11 @@ class RecipeMaker(object):
 			except subprocess.CalledProcessError as e:
 				# it's OK to fail on an uninitialized conda-bld/<platform> directory.
 				# TODO: the way we test for this is pretty ugly, but I can't think of a better way yet
-				j = json.loads(e.output)
-				if (j[u'error_type'] == 'NoPackagesFound') or (j[u'error_type'] == "RuntimeError" and j[u'error'].startswith("Could not find URL: file:///")):
+				#j = json.loads(e.output)
+				#if (j[u'error_type'] == 'NoPackagesFound') or (j[u'error_type'] == "RuntimeError" and j[u'error'].startswith("Could not find URL: file:///")):
 					is_built = False
-				else:
-					raise
+				#else:
+				#	raise
 
 			self.products[name] = ProductInfo(name, version, build_string, buildnum, None, None, is_built, False)
 
